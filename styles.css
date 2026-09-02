@@ -59,6 +59,7 @@ h2 { margin:0; font-size:clamp(2.5rem,5vw,5.8rem); line-height:.88; letter-spaci
 .gallery-page .design-grid { padding:clamp(40px,6vw,90px) 4vw; }
 .gallery-page .art-frame::after { display:none; }
 .gallery-page .design-card:nth-child(1), .gallery-page .design-card:nth-child(6) { grid-column:span 6; }
+.detail-page .detail-art::after { display:none; }
 .detail { display:grid; grid-template-columns:1.15fr .85fr; min-height:calc(100vh - 76px); }
 .detail-art { min-height:590px; border-right:var(--line); background:var(--detail-color); display:grid; place-items:center; position:relative; }
 .detail-art .tile-symbol { font-size:clamp(10rem,23vw,22rem); }

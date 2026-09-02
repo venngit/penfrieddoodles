@@ -22,10 +22,25 @@
 			<h1>SHOP<br>COMING<br>SOON.</h1>
 			<p>The doodles are getting ready. For now, find the latest designs over on Redbubble.</p>
 			<a class="button-link" href="https://www.redbubble.com/people/swwtsourcookies/explore?page=1&amp;sortOrder=recent">VISIT REDBUBBLE &rarr;</a>
+			<form class="subscribe-form" id="subscribe-form">
+				<label for="email">WE WILL LET YOU KNOW WHAT'S NEW</label>
+				<div><input id="email" type="email" name="email" placeholder="YOUR EMAIL ADDRESS" autocomplete="email" required><button type="submit">JOIN &rarr;</button></div>
+				<p class="subscribe-success" id="subscribe-status" hidden aria-live="polite"></p>
+			</form>
 		</section>
 		<section class="shop-side" aria-hidden="true">!</section>
 	</main>
 
 	<footer><span>PEN-FRIED DOODLES / 2026</span><span>Illustrations for your good side.</span></footer>
+	<script>
+		document.getElementById('subscribe-form').addEventListener('submit', event => {
+			event.preventDefault();
+			const email = document.getElementById('email').value;
+			const status = document.getElementById('subscribe-status');
+			status.hidden = false;
+			status.textContent = 'YOUR EMAIL APP IS OPENING. SEND THE MESSAGE TO JOIN THE LIST.';
+			location.href = `mailto:hello@penfrieddoodles.com?subject=${encodeURIComponent('Newsletter subscription')}&body=${encodeURIComponent(`Please add ${email} to the Pen-Fried Doodles news list.`)}`;
+		});
+	</script>
 </body>
 </html>
