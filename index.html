@@ -3,45 +3,53 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Pen-Fried Doodles shop is coming soon. Explore current designs on Redbubble.">
-	<title>Shop Coming Soon | Pen-Fried Doodles</title>
+	<meta name="description" content="Pen-Fried Doodles: colourful little characters and strange ideas.">
+	<title>Pen-Fried Doodles</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<header class="site-header">
-		<a class="brand" href="index.html" aria-label="Pen-Fried Doodles home"><span>PEN-FRIED</span><span>DOODLES</span></a>
-		<nav class="nav" aria-label="Primary navigation">
-			<a href="all_doodles.html">ALL DOODLES</a>
-			<a href="https://www.redbubble.com/people/swwtsourcookies/explore?page=1&amp;sortOrder=recent">REDBUBBLE</a>
-		</nav>
+		<a class="brand" href="#/" aria-label="Pen-Fried Doodles home"><span>PEN-FRIED</span><span>DOODLES</span></a>
+		<button class="menu-button" id="menu-button" aria-label="Toggle menu">+</button>
+		<nav class="nav" id="nav"><a href="#/designs">DESIGNS</a><a href="#/about">ABOUT</a><a href="#/shop">SHOP</a><a href="#/contact">CONTACT</a></nav>
 	</header>
-
-	<main class="page shop-page">
-		<section class="shop-copy">
-			<span class="eyebrow">The future shop</span>
-			<h1>SHOP<br>COMING<br>SOON.</h1>
-            <h3>Our very own stickers are in the making.</h3>
-			<p>We're getting ready to print, cut, and pack them ourselves from our home studio. For now, find the latest designs over on Redbubble.</p>
-			<a class="button-link" href="https://www.redbubble.com/people/swwtsourcookies/explore?page=1&amp;sortOrder=recent">VISIT REDBUBBLE &rarr;</a>
-			<form class="subscribe-form" id="subscribe-form">
-				<label for="email">WE WILL LET YOU KNOW WHAT'S NEW</label>
-				<div><input id="email" type="email" name="email" placeholder="YOUR EMAIL ADDRESS" autocomplete="email" required><button type="submit">JOIN &rarr;</button></div>
-				<p class="subscribe-success" id="subscribe-status" hidden aria-live="polite"></p>
-			</form>
-		</section>
-		<section class="shop-side" aria-hidden="true">!</section>
-	</main>
-
-	<footer><span>PEN-FRIED DOODLES / 2026</span><span>Illustrations for your good side. WITH LOVE FROM ICELAND 🇮🇸 .</span></footer>
+	<main id="app"></main>
+	<footer><span>PEN-FRIED DOODLES / 2026</span><span>Illustrations for your good side. Made with love from Iceland 🇮🇸. </span></footer>
 	<script>
-		document.getElementById('subscribe-form').addEventListener('submit', event => {
-			event.preventDefault();
-			const email = document.getElementById('email').value;
-			const status = document.getElementById('subscribe-status');
-			status.hidden = false;
-			status.textContent = 'YOUR EMAIL APP IS OPENING. SEND THE MESSAGE TO JOIN THE LIST.';
-			location.href = `mailto:hello@penfrieddoodles.com?subject=${encodeURIComponent('Newsletter subscription')}&body=${encodeURIComponent(`Please add ${email} to the Pen-Fried Doodles news list.`)}`;
-		});
+		const illustrations = [
+			{ id: 1, name: "Hooray Penguin", slug: "hooray-penguin", description: "A tiny celebration with absolutely no inside voice.", image: "designs/stickers/Horray Penguin.png", category: "Character", tags: ["penguin", "celebration"], color: "#83aef3", symbol: "!", featured: true, heroLabel: "HOORAY!" },
+			{ id: 2, name: "Cute Puffin", slug: "cute-puffin", description: "A puffin who has perfected the art of looking mildly surprised.", image: "designs/stickers/Cute Puffin.png", category: "Character", tags: ["puffin", "bird"], color: "#ffe500", symbol: "~", featured: true },
+			{ id: 3, name: "Hello Dog Sticker", slug: "hello-dog", description: "A dog with a greeting prepared for every possible occasion.", image: "designs/stickers/Hello Dog.png", category: "Character", tags: ["dog", "hello"], color: "#ff9b8d", symbol: ":)", featured: true },
+			{ id: 4, name: "Happy Shiba", slug: "happy-shiba", description: "Professionally cheerful. Off the clock, still pretty cheerful.", image: "designs/stickers/Happy Shiba.png", category: "Character", tags: ["dog", "shiba"], color: "#ffb10b", symbol: "*", featured: false },
+			{ id: 5, name: "Cozy Monkey", slug: "cozy-monkey", description: "No agenda. No shoes. Very serious about being cozy.", image: "designs/stickers/Cozy Monkey.png", category: "Character", tags: ["monkey", "cozy"], color: "#9a3e3e", symbol: "@", featured: false },
+			{ id: 6, name: "Dog's Business", slug: "dogs-business", description: "A dog with a very important meeting and no visible calendar.", image: "designs/stickers/Dog's Business.png", category: "Character", tags: ["dog", "work"], color: "#080808", symbol: "$", featured: true }
+		];
+
+		const productCategories = [
+			{ id: "stickers", name: "Stickers", products: [] }
+		];
+
+		const heroIllustration = illustrations.find(illustration => illustration.heroLabel) ?? illustrations[0];
+		const artwork = illustration => `<div class="art-frame" style="--card-color:${illustration.color}"><span class="tile-symbol" aria-hidden="true">${illustration.symbol}</span><img src="${illustration.image}" alt="${illustration.name}" onerror="this.remove()"></div>`;
+		const illustrationCard = (illustration, featured = false) => `<a class="design-card${featured ? ' feature' : ''}" href="#/designs/${illustration.slug}">${artwork(illustration)}<div class="card-info"><span class="card-title">${illustration.name.toUpperCase()}</span><span class="meta">${illustration.category}</span></div></a>`;
+		const productCard = product => `<a class="design-card product-card" href="${product.href}"><div class="art-frame" style="--card-color:${product.color}"><img src="${product.image}" alt="${product.name}"></div><div class="card-info"><span class="card-title">${product.name.toUpperCase()}</span><span class="meta">${product.type.toUpperCase()}</span></div></a>`;
+		const productCategory = category => `<section class="section shop-category"><div class="section-head"><h2>${category.name.toUpperCase()}</h2></div><div class="design-grid">${category.products.map(productCard).join('')}</div></section>`;
+		const listedProductCategories = () => productCategories.filter(category => category.products.length > 0);
+		const header = (title, subhead) => `<section class="page-header"><span class="eyebrow">Pen-Fried Doodles / Illustration archive</span><h1 class="page-title">${title}</h1><p>${subhead}</p></section>`;
+		function home() { return `<div class="page">
+			<section class="hero"><div class="hero-copy"><div><span class="eyebrow">Illustrations, stickers, little oddballs</span><h1>SMALL<br>DOODLES.<br>BIG<br>PERSONALITY.</h1></div><a class="button-link" href="#/designs">SEE ALL DESIGNS &rarr;</a></div><div class="hero-art" data-hero-label="${heroIllustration.heroLabel ?? ''}"><img class="hero-design-art" src="${heroIllustration.image}" alt="${heroIllustration.name}"></div></section>
+			<section class="intro-band section"><span class="eyebrow">01 / The idea</span><p>Colourful little characters, strange ideas and things that probably did not need to exist, but do.</p></section>
+			<section class="section"><div class="section-head"><h2>FEATURED<br>WORK</h2><a class="arrow-link" href="#/designs">View everything &rarr;</a></div><div class="design-grid">${illustrations.filter(illustration => illustration.featured).slice(0,3).map((illustration, index) => illustrationCard(illustration, index === 0)).join('')}</div></section>
+			<section class="black-band"><span class="eyebrow">Pen-Fried Doodles / Est. somewhere between a sketchbook and a snack</span><p>Made for people who like their cheerful things with a bit more bite.</p></section>
+			<section class="coral-band"><div class="words"><span class="eyebrow">The full archive</span><h2>ALL THE LITTLE GUYS LIVE HERE.</h2><a class="button-link" href="#/designs">EXPLORE DESIGNS &rarr;</a></div><div class="coral-art">*</div></section>
+		</div>`; }
+		function designsPage() { return `<div class="page gallery-page">${header('ALL DESIGNS', 'Every little thing we\'ve drawn.')}<div class="design-grid">${illustrations.map(illustration => illustrationCard(illustration)).join('')}</div></div>`; }
+		function detail(slug) { const index = illustrations.findIndex(illustration => illustration.slug === slug); const illustration = illustrations[index]; if (!illustration) return designsPage(); const previous = illustrations[(index - 1 + illustrations.length) % illustrations.length], next = illustrations[(index + 1) % illustrations.length]; return `<div class="page detail"><section class="detail-art" style="--detail-color:${illustration.color}" data-image="${illustration.image.split('/').pop()}"><span class="tile-symbol">${illustration.symbol}</span><img src="${illustration.image}" alt="${illustration.name}" onerror="this.remove()"></section><section class="detail-copy"><span class="eyebrow">Design ${String(illustration.id).padStart(2,'0')} / ${illustration.category}</span><h1>${illustration.name.toUpperCase()}</h1><p>${illustration.description}</p><div class="detail-meta"><span class="meta">CATEGORY / ${illustration.category}</span><span class="meta">TAGS / ${illustration.tags.join(', ').toUpperCase()}</span><span class="meta">SHOP RELEASE / COMING SOON</span></div><nav class="detail-nav"><a href="#/designs/${previous.slug}">&larr; PREVIOUS</a><a href="#/designs/${next.slug}">NEXT &rarr;</a></nav></section></div>`; }
+		function about() { return `<div class="page"><section class="about-intro"><span class="eyebrow">A small independent illustration brand</span><h1>ABOUT<br>PEN-FRIED<br>DOODLES</h1></section><section class="about-copy"><span class="eyebrow">The short version</span><div><p>Pen-Fried Doodles makes bold illustrations populated by expressive little characters and the odd questionable decision.</p><p>It began as a place for drawings that were too peculiar to leave in a sketchbook and too good to take entirely seriously.</p><p>The result is an expanding cast of bright, graphic, funny things: here to make the everyday a little less visually polite.</p></div></section><section class="black-band"><span class="eyebrow">No tiny violins. No inspirational quotes.</span><p>Just drawings with somewhere to be.</p></section></div>`; }
+		function shop() { return `<div class="page shop-page"><section class="shop-copy"><span class="eyebrow">The future shop</span><h1>THE<br>DOODLES<br>ARE GETTING<br>READY.</h1><p>Stickers and other good things are on their way. They are just having a lie down first.</p></section><section class="shop-side">!</section>${listedProductCategories().map(productCategory).join('')}</div>`; }
+		function contact() { return `<div class="page contact-page"><section class="contact-copy"><span class="eyebrow">Say hello</span><h1>LET'S<br>MAKE<br>SOMETHING<br>WEIRD.</h1><p>For collaborations, illustration enquiries, wholesale, and general questions.</p><ul class="contact-list"><li><a href="mailto:hello@penfrieddoodles.com">HELLO@PENFRIEDDOODLES.COM</a></li><li><a href="#">INSTAGRAM / @PENFRIEDDOODLES</a></li></ul></section><section class="contact-side">?</section></div>`; }
+		function render() { const path = location.hash.slice(1) || '/'; let output = path === '/' ? home() : path === '/designs' ? designsPage() : path.startsWith('/designs/') ? detail(path.split('/').pop()) : path === '/about' ? about() : path === '/shop' ? shop() : path === '/contact' ? contact() : home(); document.getElementById('app').innerHTML = output; document.querySelectorAll('.nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + path)); document.getElementById('nav').classList.remove('open'); window.scrollTo({top:0, behavior:'instant'}); }
+		window.addEventListener('hashchange', render); document.getElementById('menu-button').addEventListener('click', () => document.getElementById('nav').classList.toggle('open')); render();
 	</script>
 </body>
 </html>

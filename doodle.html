@@ -21,26 +21,26 @@
 	<footer><span>PEN-FRIED DOODLES / 2026</span><span>Illustrations for your good side.</span></footer>
 
 	<script>
-		const designs = [
-			{ name: 'Hooray Penguin', slug: 'hooray-penguin', description: 'A tiny celebration with absolutely no inside voice.', image: 'designs/stickers/Horray%20Penguin.png', tags: 'PENGUIN, CELEBRATION', color: '#83aef3' },
-			{ name: 'Cute Puffin', slug: 'cute-puffin', description: 'A puffin who has perfected the art of looking mildly surprised.', image: 'designs/stickers/Cute%20Puffin.png', tags: 'PUFFIN, BIRD', color: '#ffe500' },
-			{ name: 'Hello Dog', slug: 'hello-dog', description: 'A dog with a greeting prepared for every possible occasion.', image: 'designs/stickers/Hello%20Dog.png', tags: 'DOG, HELLO', color: '#ff9b8d' },
-			{ name: 'Happy Shiba', slug: 'happy-shiba', description: 'Professionally cheerful. Off the clock, still pretty cheerful.', image: 'designs/stickers/Happy%20Shiba.png', tags: 'DOG, SHIBA', color: '#ffb10b' },
-			{ name: 'Cozy Monkey', slug: 'cozy-monkey', description: 'No agenda. No shoes. Very serious about being cozy.', image: 'designs/stickers/Cozy%20Monkey.png', tags: 'MONKEY, COZY', color: '#9a3e3e' },
-			{ name: "Dog's Business", slug: 'dogs-business', description: 'A dog with a very important meeting and no visible calendar.', image: 'designs/stickers/Dog%27s%20Business.png', tags: 'DOG, WORK', color: '#121212' },
-			{ name: 'Winter Artic Fox', slug: 'winter-artic-fox', description: 'A winter-ready fox with a very good view of the snow.', image: 'designs/stickers/Winter%20Artic%20Fox.png', tags: 'FOX, WINTER', color: '#c8d5ad' }
+		const illustrations = [
+			{ name: 'Hooray Penguin', slug: 'hooray-penguin', description: 'A tiny celebration with absolutely no inside voice.', image: 'designs/stickers/Horray%20Penguin.png', category: 'Character', tags: 'PENGUIN, CELEBRATION', color: '#83aef3' },
+			{ name: 'Cute Puffin', slug: 'cute-puffin', description: 'A puffin who has perfected the art of looking mildly surprised.', image: 'designs/stickers/Cute%20Puffin.png', category: 'Character', tags: 'PUFFIN, BIRD', color: '#ffe500' },
+			{ name: 'Hello Dog', slug: 'hello-dog', description: 'A dog with a greeting prepared for every possible occasion.', image: 'designs/stickers/Hello%20Dog.png', category: 'Character', tags: 'DOG, HELLO', color: '#ff9b8d' },
+			{ name: 'Happy Shiba', slug: 'happy-shiba', description: 'Professionally cheerful. Off the clock, still pretty cheerful.', image: 'designs/stickers/Happy%20Shiba.png', category: 'Character', tags: 'DOG, SHIBA', color: '#ffb10b' },
+			{ name: 'Cozy Monkey', slug: 'cozy-monkey', description: 'No agenda. No shoes. Very serious about being cozy.', image: 'designs/stickers/Cozy%20Monkey.png', category: 'Character', tags: 'MONKEY, COZY', color: '#9a3e3e' },
+			{ name: "Dog's Business", slug: 'dogs-business', description: 'A dog with a very important meeting and no visible calendar.', image: 'designs/stickers/Dog%27s%20Business.png', category: 'Character', tags: 'DOG, WORK', color: '#121212' },
+			{ name: 'Winter Artic Fox', slug: 'winter-artic-fox', description: 'A winter-ready fox with a very good view of the snow.', image: 'designs/stickers/Winter%20Artic%20Fox.png', category: 'Character', tags: 'FOX, WINTER', color: '#c8d5ad' }
 		];
 
 		const selectedSlug = new URLSearchParams(location.search).get('design');
-		const designIndex = designs.findIndex(design => design.slug === selectedSlug);
-		const design = designs[designIndex === -1 ? 0 : designIndex];
-		const previous = designs[(designIndex - 1 + designs.length) % designs.length];
-		const next = designs[(designIndex + 1) % designs.length];
+		const illustrationIndex = illustrations.findIndex(illustration => illustration.slug === selectedSlug);
+		const illustration = illustrations[illustrationIndex === -1 ? 0 : illustrationIndex];
+		const previous = illustrations[(illustrationIndex - 1 + illustrations.length) % illustrations.length];
+		const next = illustrations[(illustrationIndex + 1) % illustrations.length];
 
-		document.title = `${design.name} | Pen-Fried Doodles`;
+		document.title = `${illustration.name} | Pen-Fried Doodles`;
 		document.getElementById('design-detail').innerHTML = `
-			<section class="detail-art" style="--detail-color:${design.color}"><img src="${design.image}" alt="${design.name} illustration"></section>
-			<section class="detail-copy"><span class="eyebrow">Pen-Fried Doodles / Character</span><h1>${design.name.toUpperCase()}</h1><p>${design.description}</p><div class="detail-meta"><span class="meta">CATEGORY / CHARACTER</span><span class="meta">TAGS / ${design.tags}</span><a class="button-link" href="https://www.redbubble.com/people/swwtsourcookies/explore?page=1&amp;sortOrder=recent">VISIT REDBUBBLE &rarr;</a></div><nav class="detail-nav"><a href="doodle.html?design=${previous.slug}">&larr; PREVIOUS</a><a href="doodle.html?design=${next.slug}">NEXT &rarr;</a></nav></section>`;
+			<section class="detail-art" style="--detail-color:${illustration.color}"><img src="${illustration.image}" alt="${illustration.name} illustration"></section>
+			<section class="detail-copy"><span class="eyebrow">Pen-Fried Doodles / ${illustration.category}</span><h1>${illustration.name.toUpperCase()}</h1><p>${illustration.description}</p><div class="detail-meta"><span class="meta">CATEGORY / ${illustration.category.toUpperCase()}</span><span class="meta">TAGS / ${illustration.tags}</span><a class="button-link" href="https://www.redbubble.com/people/swwtsourcookies/explore?page=1&amp;sortOrder=recent">VISIT REDBUBBLE &rarr;</a></div><nav class="detail-nav"><a href="doodle.html?design=${previous.slug}">&larr; PREVIOUS</a><a href="doodle.html?design=${next.slug}">NEXT &rarr;</a></nav></section>`;
 	</script>
 </body>
 </html>

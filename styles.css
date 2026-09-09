@@ -23,7 +23,7 @@ button { font:inherit; color:inherit; }
 .button-link:hover { transform:translate(-4px,-4px); box-shadow:5px 5px 0 var(--ink); }
 .hero-art { min-height:540px; background:var(--blue); border-left:var(--line); position:relative; display:grid; place-items:center; overflow:hidden; }
 .hero-art::before { content:""; width:64%; aspect-ratio:1; background:var(--yellow); border-radius:50%; position:absolute; top:12%; right:9%; }
-.hero-art::after { content:"HOORAY!"; position:absolute; top:62%; left:50%; z-index:2; font-size:clamp(2.4rem,5vw,5.5rem); font-weight:700; letter-spacing:-.08em; transform:translateX(-50%) rotate(-10deg); }
+.hero-art::after { content:attr(data-hero-label); position:absolute; top:62%; left:50%; z-index:2; font-size:clamp(2.4rem,5vw,5.5rem); font-weight:700; letter-spacing:-.08em; transform:translateX(-50%) rotate(-10deg); }
 .hero-design-art { width:min(84%,560px); height:84%; object-fit:contain; position:relative; z-index:1; transform:rotate(-10deg); transition:transform .3s ease; }
 .hero-art:hover .hero-design-art { transform:rotate(-10deg) translateY(-8px); }
 .placeholder-character { width:min(62%,390px); aspect-ratio:1; position:relative; z-index:1; display:grid; place-items:center; font-size:clamp(5rem,12vw,10rem); background:var(--coral); border:var(--line); box-shadow:18px 18px 0 var(--ink); transition:transform .3s ease; }
@@ -78,18 +78,11 @@ h2 { margin:0; font-size:clamp(2.5rem,5vw,5.8rem); line-height:.88; letter-spaci
 .shop-copy, .contact-copy { padding:clamp(48px,8vw,120px) 4vw; background:var(--orange); display:flex; flex-direction:column; }
 .shop-copy h1, .contact-copy h1 { font-size:clamp(4rem,9vw,10rem); line-height:.79; letter-spacing:-.09em; margin:25px 0; }
 .shop-copy p, .contact-copy p { font-size:clamp(1.3rem,2.4vw,2.2rem); line-height:1.15; max-width:500px; }
-.subscribe-form { margin-top:38px; max-width:520px; }
-.subscribe-form label, .subscribe-success { display:block; margin-bottom:10px; font:500 .68rem/1.5 "DM Mono", monospace; letter-spacing:.055em; }
-.subscribe-form div { display:flex; border:var(--line); background:var(--paper); }
-.subscribe-form input { min-width:0; flex:1; border:0; padding:14px; outline:0; background:transparent; font:500 .72rem "DM Mono", monospace; }
-.subscribe-form input::placeholder { color:var(--ink); opacity:.7; }
-.subscribe-form button { border:0; border-left:var(--line); padding:0 16px; background:var(--yellow); cursor:pointer; font:500 .72rem "DM Mono", monospace; }
-.subscribe-form button:hover { background:var(--ink); color:var(--paper); }
-.subscribe-success { margin-top:42px; max-width:360px; border-top:var(--line); padding-top:13px; }
+.shop-category { grid-column:1 / -1; border-top:var(--line); background:var(--paper); }
 .shop-side, .contact-side { background:var(--yellow); border-left:var(--line); display:grid; place-items:center; font-size:clamp(8rem,18vw,18rem); }
 .contact-copy { background:var(--paper); }
 .contact-side { background:var(--coral); }
 .contact-list { list-style:none; padding:0; margin:55px 0 0; font:500 .95rem/2 "DM Mono", monospace; }
 .contact-list a { border-bottom:2px solid; }
 footer { border-top:var(--line); padding:28px 4vw; display:flex; justify-content:space-between; gap:25px; font:500 .68rem "DM Mono", monospace; text-transform:uppercase; }
-@media (max-width:700px) { .site-header { height:63px; } .nav { display:flex; position:static; padding:0; gap:14px; } .nav a { padding:12px 0; } .menu-button { display:none; } .page, .shop-page, .contact-page { min-height:calc(100svh - 63px); } .hero, .coral-band, .detail, .shop-page, .contact-page { grid-template-columns:1fr; } .hero-art, .coral-art, .detail-art, .shop-side, .contact-side { border-left:0; border-top:var(--line); min-height:390px; } .shop-copy { padding:48px 8vw; } .shop-copy h1 { font-size:clamp(3.8rem,18vw,5.5rem); margin:22px 0; } .shop-copy p { font-size:1.25rem; } .shop-side { min-height:190px; font-size:8rem; } .intro-band, .about-copy { grid-template-columns:1fr; gap:25px; } .design-card, .design-card.feature, .gallery-page .design-card:nth-child(1), .gallery-page .design-card:nth-child(6) { grid-column:span 6; } .design-card.feature .art-frame { aspect-ratio:1 / 1.05; } .detail-copy { min-height:430px; } .detail-art .tile-symbol { font-size:11rem; } .subscribe-form div { display:block; } .subscribe-form input, .subscribe-form button { display:block; width:100%; min-height:48px; } .subscribe-form button { border-left:0; border-top:var(--line); } footer { flex-direction:column; } }
+@media (max-width:700px) { .site-header { height:63px; } .nav { display:flex; position:static; padding:0; gap:14px; } .nav a { padding:12px 0; } .menu-button { display:none; } .page, .shop-page, .contact-page { min-height:calc(100svh - 63px); } .hero, .coral-band, .detail, .shop-page, .contact-page { grid-template-columns:1fr; } .hero-art, .coral-art, .detail-art, .shop-side, .contact-side { border-left:0; border-top:var(--line); min-height:390px; } .shop-copy { padding:48px 8vw; } .shop-copy h1 { font-size:clamp(3.8rem,18vw,5.5rem); margin:22px 0; } .shop-copy p { font-size:1.25rem; } .shop-side { min-height:190px; font-size:8rem; } .intro-band, .about-copy { grid-template-columns:1fr; gap:25px; } .design-card, .design-card.feature, .gallery-page .design-card:nth-child(1), .gallery-page .design-card:nth-child(6) { grid-column:span 6; } .design-card.feature .art-frame { aspect-ratio:1 / 1.05; } .detail-copy { min-height:430px; } .detail-art .tile-symbol { font-size:11rem; } footer { flex-direction:column; } }
