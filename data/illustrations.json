@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Hooray Penguin",
+    "slug": "hooray-penguin",
+    "description": "A tiny celebration with absolutely no inside voice.",
+    "category": "Character",
+    "tags": [
+      "penguin",
+      "celebration"
+    ],
+    "color": "#83aef3",
+    "featured": true,
+    "source": "designs/doodles/Horray Penguin.png"
+  },
+  {
+    "id": 2,
+    "name": "Cute Puffin",
+    "slug": "cute-puffin",
+    "description": "A puffin who has perfected the art of looking mildly surprised.",
+    "category": "Character",
+    "tags": [
+      "puffin",
+      "bird"
+    ],
+    "color": "#ffe500",
+    "featured": true,
+    "source": "designs/doodles/Cute Puffin.png"
+  },
+  {
+    "id": 3,
+    "name": "Hello Dog",
+    "slug": "hello-dog",
+    "description": "A dog with a greeting prepared for every possible occasion.",
+    "category": "Character",
+    "tags": [
+      "dog",
+      "hello"
+    ],
+    "color": "#ff9b8d",
+    "featured": true,
+    "source": "designs/doodles/Hello Dog.png"
+  },
+  {
+    "id": 4,
+    "name": "Happy Shiba",
+    "slug": "happy-shiba",
+    "description": "Professionally cheerful. Off the clock, still pretty cheerful.",
+    "category": "Character",
+    "tags": [
+      "dog",
+      "shiba"
+    ],
+    "color": "#ffb10b",
+    "featured": false,
+    "source": "designs/doodles/Happy Shiba.png"
+  },
+  {
+    "id": 5,
+    "name": "Cozy Monkey",
+    "slug": "cozy-monkey",
+    "description": "No agenda. No shoes. Very serious about being cozy.",
+    "category": "Character",
+    "tags": [
+      "monkey",
+      "cozy"
+    ],
+    "color": "#9a3e3e",
+    "featured": false,
+    "source": "designs/doodles/Cozy Monkey.png"
+  },
+  {
+    "id": 6,
+    "name": "Dog's Business",
+    "slug": "dogs-business",
+    "description": "A dog with a very important meeting and no visible calendar.",
+    "category": "Character",
+    "tags": [
+      "dog",
+      "work"
+    ],
+    "color": "#080808",
+    "featured": true,
+    "source": "designs/doodles/Dog's Business.png"
+  },
+  {
+    "id": 7,
+    "name": "Winter Arctic Fox",
+    "slug": "winter-arctic-fox",
+    "description": "A winter-ready fox with a very good view of the snow.",
+    "category": "Character",
+    "tags": [
+      "fox",
+      "winter"
+    ],
+    "color": "#c8d5ad",
+    "featured": false,
+    "source": "designs/doodles/Winter Arctic Fox.png"
+  },
+  {
+    "id": 8,
+    "name": "Alpapa Alpaca",
+    "slug": "alpapa-alpaca",
+    "description": "An alpaca with a name almost as fluffy as its coat.",
+    "category": "Character",
+    "tags": [
+      "alpaca",
+      "fluffy"
+    ],
+    "color": "#dd9ead",
+    "featured": false,
+    "isNew": true,
+    "source": "designs/doodles/Alpapa Alpaca.png"
+  },
+  {
+    "id": 9,
+    "name": "Summer Arctic Fox",
+    "slug": "summer-arctic-fox",
+    "description": "A sun-soaked fox enjoying the warmer side of the year.",
+    "category": "Character",
+    "tags": [
+      "fox",
+      "summer"
+    ],
+    "color": "#83aef3",
+    "featured": false,
+    "isNew": true,
+    "source": "designs/doodles/Summer Arctic Fox.png"
+  },
+  {
+    "id": 10,
+    "name": "Arctic Fox Duo",
+    "slug": "arctic-fox-duo",
+    "description": "Two arctic foxes, twice the winter-ready charm.",
+    "category": "Character",
+    "tags": [
+      "fox",
+      "arctic",
+      "duo"
+    ],
+    "color": "#b7c9dd",
+    "featured": false,
+    "isNew": true,
+    "source": "designs/doodles/Arctic Fox Duo.png"
+  }
+]
